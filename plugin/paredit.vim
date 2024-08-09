@@ -347,8 +347,8 @@ function! PareditChange( type, ... )
         let v:lnum = line('.')
         let expr = &indentexpr
         if expr == ''
-            " No special 'indentexpr', call default lisp indent
-            let expr = 'lispindent(v:lnum)'
+            " No special 'indentexpr', call default  indent
+            let expr = 'indent(v:lnum)'
         endif
         execute "call setline( v:lnum, repeat( ' ', " . expr . " ) )"
         normal! $l
@@ -769,7 +769,7 @@ function! PareditInsertOpening( open, close )
     else
         let retval = a:open . a:close . "\<Left>"
     endif
-    if pos > 0 && line[pos-1] !~ b:any_wsopen_char && line[pos-1] !~ s:any_macro_prefix && &ft =~ '.*\(clojure\|scheme\|racket\|lisp\).*'
+    if pos > 0 && line[pos-1] !~ b:any_wsopen_char && line[pos-1] !~ s:any_macro_prefix
         " Add a space before if needed
         let retval = " " . retval
     endif
