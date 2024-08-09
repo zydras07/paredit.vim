@@ -769,7 +769,7 @@ function! PareditInsertOpening( open, close )
     else
         let retval = a:open . a:close . "\<Left>"
     endif
-    if pos > 0 && line[pos-1] !~ b:any_wsopen_char && line[pos-1] !~ s:any_macro_prefix
+    if pos > 0 && line[pos-1] !~ b:any_wsopen_char && line[pos-1] !~ s:any_macro_prefix && &ft =~ '.*\(clojure\|scheme\|racket\|lisp\).*'
         " Add a space before if needed
         let retval = " " . retval
     endif
